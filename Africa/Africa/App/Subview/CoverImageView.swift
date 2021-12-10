@@ -9,13 +9,13 @@ import SwiftUI
 
 struct CoverImageView: View {
     // MARK: Properties
-    let coverImages: [CoverImage] = Bundle.main.decode(file: "covers", type: CoverImage.self)
+    let coverImages: [CoverImage] = Bundle.main.decode(file: "covers.json")
     
     // MARK: Body
     var body: some View {
         TabView {
             ForEach(coverImages) { image in
-                Image(image.name ?? "cover-lion")
+                Image(image.name)
                     .resizable()
                     .scaledToFill()
             } //: Loop

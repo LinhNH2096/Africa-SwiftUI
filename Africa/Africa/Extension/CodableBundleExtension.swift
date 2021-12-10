@@ -8,9 +8,9 @@
 import Foundation
 
 extension Bundle {
-    func decode<T: Codable>(file: String, type: T.Type) -> [T] {
+    func decode<T: Codable>(file: String) -> T {
         // 1. Locale the json file
-        guard let url = self.url(forResource: file, withExtension: "json")
+        guard let url = self.url(forResource: file, withExtension: nil)
         else {
             fatalError("Failed to locale \(file) in bundle")
         }
@@ -21,7 +21,7 @@ extension Bundle {
         }
         // 3. Decode data
         let decoder = JSONDecoder()
-        guard let loaded = try? decoder.decode([T].self, from: data)
+        guard let loaded = try? decoder.decode(T.self, from: data)
         else {
             fatalError("Failed to decode data from \(file)")
         }
