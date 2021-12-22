@@ -11,6 +11,10 @@ struct ContentView: View {
     // MARK: - Properties
     let animals: [Animal] = Bundle.main.decode(file: "animals.json")
     
+    init() {
+        UITableView.appearance().showsVerticalScrollIndicator = false
+    }
+    
     // MARK: - Body
     var body: some View {
         NavigationView {
@@ -20,8 +24,9 @@ struct ContentView: View {
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 
                 ForEach(animals) { animal in
-                    AnimalListItemView(animal: animal)
-                    
+                    NavigationLink(destination: AnimalDetailView(animal: animal)) {
+                        AnimalListItemView(animal: animal)
+                    }
                 }
             } //: List
             .listStyle(PlainListStyle())
