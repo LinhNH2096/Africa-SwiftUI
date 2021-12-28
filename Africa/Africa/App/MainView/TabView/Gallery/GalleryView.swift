@@ -54,6 +54,7 @@ struct GalleryView: View {
                             }
                     }
                 } //: Grid
+                .animation(.easeIn)
                 .onAppear {
                     switchGrid()
                 }
