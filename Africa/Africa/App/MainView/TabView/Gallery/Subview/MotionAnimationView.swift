@@ -60,7 +60,7 @@ struct MotionAnimationView: View {
                         .onAppear {
                             isAnimating = true
                         }
-                } //: Loop
+                }
             } //: ZStack
             .drawingGroup()
             
