@@ -11,6 +11,7 @@ struct GalleryView: View {
     // MARK: - Properties
     
     private var animals: [Animal] = Bundle.main.decode(file: "animals.json")
+    private let haptic = UIImpactFeedbackGenerator(style: .medium)
     
     @State private var gridColumn: Double = 3.0
     
@@ -51,6 +52,7 @@ struct GalleryView: View {
                             .overlay(Circle().stroke(Color.white, lineWidth: 1))
                             .onTapGesture {
                                 animalSelected = item.image
+                                haptic.impactOccurred()
                             }
                     }
                 } //: Grid
