@@ -15,8 +15,7 @@ struct GalleryView: View {
     
     @State private var gridColumn: Double = 3.0
     
-    @State private var gridLayout: [GridItem] = Array(repeating: GridItem(),
-                                                      count: 1)
+    @State private var gridLayout: [GridItem] = Array(repeating: GridItem(), count: 1)
    
     @State private var animalSelected: String = "lion"
     
@@ -58,6 +57,7 @@ struct GalleryView: View {
                 } //: Grid
                 .animation(.easeIn)
                 .onAppear {
+                    animalSelected = animals.first?.image ?? "lion"
                     switchGrid()
                 }
             } //: VStack
